@@ -42,15 +42,13 @@ namespace Archer
             this.arrowRigidbody.isKinematic = true;
 
             // Miramos a ver si el objeto contra el que ha impacto la flecha tiene un componente Enemy...
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
-            if (enemy != null)
+            if (other.transform.parent.gameObject.GetComponent<Enemy>() != null)
             {
-                enemy.Hit();
+
+                // ... Y si lo tiene, le hacemos daño (la siguiente comprohación es equivalente a hacer if (enemy != null) { enemy.Hit(); }
+                other.transform.parent.gameObject.GetComponent<Enemy>().Hit();
             }
-
-            // ... Y si lo tiene, le hacemos daño (la siguiente comprohación es equivalente a hacer if (enemy != null) { enemy.Hit(); }
-
         }
 
     }
