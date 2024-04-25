@@ -30,6 +30,7 @@ namespace Archer
 
         private Animator animator;
 
+
         private void Awake()
         {
            
@@ -37,6 +38,7 @@ namespace Archer
             fireInputReference.action.performed += Action_performed;
 
             animator = GetComponent<Animator>();
+            
         }
 
         private void Action_performed(InputAction.CallbackContext obj)
@@ -53,16 +55,16 @@ namespace Archer
 
 
             // Instanciar una flecha
+            GameObject arrow = Instantiate(arrowPrefab, handPosition.position, Quaternion.Euler(0, 90, 0));
            
 
             // Colocar la flecha en el punto de referencia de la mano de la arquera
-         
 
             // Orientar la flecha hacia delante con respecto a la arquera
-           
+            arrow.transform.rotation = this.transform.rotation;
 
             // Aplicar una fuerza a la flecha para que salga disparada
-          
+            arrow.GetComponent<Rigidbody>().AddForce(this.transform.forward * force);
         }
     }
 
