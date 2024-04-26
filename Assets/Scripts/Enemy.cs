@@ -21,14 +21,18 @@ namespace Archer
 
         Coroutine coroutine;
 
+        private AudioSource myAudioSource;
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            myAudioSource = GetComponent<AudioSource>();
         }
 
         // Método que se llamará cuando el enemigo reciba un impacto
         public void Hit()
         {
+            myAudioSource.Play();
             hits++;
             if (hits >= hitPoints)
             {
@@ -48,7 +52,9 @@ namespace Archer
 
         private void Die()
         {
+            animator.SetTrigger("Die");
             coroutine = StartCoroutine(DieCoroutine());
+
         }
 
         

@@ -8,11 +8,14 @@ namespace Archer
 
         private Rigidbody arrowRigidbody;
         private bool hit;
+        private AudioSource myAudioSource;
 
         private void Awake()
         {
             // Establecer las referencias de Rigidbody (para detener la flecha) y AudioSource (para el sonido de impacto)
             arrowRigidbody = GetComponent<Rigidbody>();
+            myAudioSource = GetComponent<AudioSource>();
+
            
         }
 
@@ -33,7 +36,7 @@ namespace Archer
             hit = true;
 
             // Reproducir el impacto de la flecha
-
+            myAudioSource.Play();
 
             // Hacemos que la flecha sea hija del objeto contra el que impacta, para que se mueva con el
             this.transform.SetParent(other.gameObject.transform);

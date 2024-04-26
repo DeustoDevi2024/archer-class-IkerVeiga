@@ -22,6 +22,8 @@ namespace Archer
 
         private IGameStateProvider gameStateProvider;//new PlayerPrefsGameStateProvider();
 
+        private int numBats = 5;
+
         private void Awake()
         {
             if (Instance != null)
