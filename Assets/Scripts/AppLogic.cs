@@ -12,6 +12,7 @@ namespace Archer
     {
         
         public static AppLogic Instance { get; private set; }
+        public int NumBats { get => numBats; set => numBats = value; }
 
         private IGameConfigProvider gameConfigProvider;
 
